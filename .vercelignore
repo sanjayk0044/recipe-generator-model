@@ -1,0 +1,37 @@
+# Ignore cache directories
+.vercel/cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore test directories
+tests/
+test/
+
+# Ignore development files
+*.log
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Ignore documentation
+docs/
+*.md
+LICENSE
+
+# Ignore version control
+.git/
+.github/
+.gitignore
+
+# Ignore editor configs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore unnecessary package files
+*.egg-info/
+dist/
+build/

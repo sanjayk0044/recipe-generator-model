@@ -35,7 +35,7 @@ def create_prompt(preferences):
     """
     print("preference: ", json.dumps(preferences, indent=2))
     prompt = f"""
-    You are a professional chef and recipe creator. Generate 1 unique recipe based on the following preferences:
+    You are a professional chef and recipe creator. Generate 5 unique recipe based on the following preferences:
     {json.dumps(preferences, indent=2)}
     
     For each recipe, provide the following information in a structured JSON format:
@@ -60,7 +60,7 @@ def create_prompt(preferences):
     - Quantity is number of packets that should be included.
     - Youtube video must be older than atleast 6 months and can be accessable.
     
-    Return your response as a valid JSON array with 1 recipe object. Each object should have the structure described above.
+    Return your response as a valid JSON array with 5 recipe object. Each object should have the structure described above.
     Do not include any explanations or text outside of the JSON structure.
     """
     
@@ -154,10 +154,6 @@ def generate_recipes(preferences_str):
         # Parse the recipes
         recipes = parse_gemini_response(response.text)
         print(f"Parsed {len(recipes)} recipes from response")
-        
-        # Clean up the response by removing unnecessary fields
-        recipes = clean_recipe_response(recipes)
-        print("Cleaned up recipe response")
         
         return recipes
     except Exception as e:
