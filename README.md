@@ -90,7 +90,7 @@ recipe_generator_api/
 python run.py
 ```
 
-The API will be available at `http://localhost:5000`.
+The API will be available at `http://localhost:3000`.
 
 ### API Endpoints
 
@@ -114,7 +114,7 @@ Generates recipe recommendations based on user preferences and available ingredi
 **Example Request:**
 
 ```bash
-curl -X POST http://localhost:5000/api/recipes \
+curl -X POST http://localhost:3000/api/recipes \
   -H "Content-Type: application/json" \
   -d '{"cuisine":"Italian","dietary":"vegetarian","meal_type":"dinner","cooking_time":"30min"}'
 ```
@@ -203,9 +203,11 @@ Build and run the Docker container:
 
 ```bash
 docker build -t recipe-generator-api .
-docker run -p 5000:5000 -e GEMINI_API_KEY=your_key_here -e MONGODB_URL=your_mongodb_url recipe-generator-api
+docker run -p 3000:3000 -e GEMINI_API_KEY=your_key_here -e MONGODB_URL=your_mongodb_url recipe-generator-api
 ```
 
 ## License
 
 MIT
+
+
