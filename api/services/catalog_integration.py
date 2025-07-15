@@ -9,7 +9,7 @@ use ingredients available in the catalog.
 import os
 import json
 from typing import List, Dict, Any, Optional
-from app.services.mongodb_service import get_mongodb_service
+from api.services.mongodb_service import get_mongodb_service
 
 class CatalogIntegrationService:
     """Service to integrate grocery catalog with recipe generation."""

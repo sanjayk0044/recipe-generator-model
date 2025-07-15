@@ -8,6 +8,10 @@ app = Flask(__name__)
 def home():
     return 'Hello, World!'
 
+@app.route('/health', methods=['GET'])
+def health():
+    return 'OK'
+
 @app.route('/recipes', methods=['POST'])
 def create_recipes():
     """

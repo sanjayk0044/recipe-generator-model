@@ -8,7 +8,7 @@ import os
 import json
 from google import genai
 from dotenv import load_dotenv
-from app.services.catalog_integration import get_integration_service
+from api.services.catalog_integration import get_integration_service
 
 # Load environment variables
 load_dotenv()
