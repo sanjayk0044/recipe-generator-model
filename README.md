@@ -207,5 +207,3 @@ docker run -p 3000:3000 -e GEMINI_API_KEY=your_key_here -e MONGODB_URL=your_mong
 ## License
 
 MIT
-
-
