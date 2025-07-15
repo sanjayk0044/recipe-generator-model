@@ -76,10 +76,8 @@ recipe_generator_api/
 │       ├── gemini_service.py       # LLM interaction
 │       └── mongodb_service.py      # MongoDB connection and queries
 ├── .env                   # Environment variables
-├── Dockerfile             # For containerization
 ├── README.md              # Documentation
 ├── requirements.txt       # Dependencies
-└── run.py                 # Main entry point
 ```
 
 ## Usage
