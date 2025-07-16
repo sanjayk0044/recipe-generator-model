@@ -5,7 +5,7 @@ from api.services.image_generation import fetch_images_from_duckduckgo
 from api.services.youtube_link_generator import get_video_links_for_recipes
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app)
 
 # Enable CORS with more specific configuration
 # CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type", "Authorization"], "methods": ["GET", "POST", "OPTIONS"]}})
@@ -37,7 +37,7 @@ def after_request(response):
     return response
 
 @app.route('/recipes', methods=['POST'])
-@cross_origin(supports_credentials=True)
+@cross_origin()
 def create_recipes():
     """
     POST endpoint to generate recipes based on user preferences
