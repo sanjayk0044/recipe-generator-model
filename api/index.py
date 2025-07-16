@@ -5,7 +5,7 @@ from api.services.image_generation import fetch_images_from_duckduckgo
 from api.services.youtube_link_generator import get_video_links_for_recipes
 
 app = Flask(__name__)
-CORS(app, origins="*")
+CORS(app, origins="C:///.....main.html")
 
 @app.route('/')
 def home():
