@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from api.services.gemini_service import generate_recipes
 from api.services.image_generation import fetch_images_from_duckduckgo
 from api.services.youtube_link_generator import get_video_links_for_recipes
 
 app = Flask(__name__)
+CORS(app, origins="*")
 
 @app.route('/')
 def home():
@@ -14,7 +16,6 @@ def health():
     return 'OK'
 
 @app.route('/recipes', methods=['POST'])
-@cross_origin()
 def create_recipes():
     """
     POST endpoint to generate recipes based on user preferences
@@ -39,7 +40,6 @@ def create_recipes():
     
 
 @app.route('/images', methods=['POST'])
-@cross_origin()
 def generate_image():
     try:
         data = request.get_json()
@@ -58,7 +58,6 @@ def generate_image():
         return jsonify({"error": str(e)}), 500
 
 @app.route('/youtube', methods=['POST'])
-@cross_origin()
 def generate_youtube_link():
     try:
         data = request.get_json()
