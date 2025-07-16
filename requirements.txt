@@ -5,5 +5,6 @@ gunicorn==20.1.0
 flask-cors==3.0.10
 pymongo>=4.0.0
 ddgs>=1.0.0
+flask-cors
 # Removing pandas as it's a large dependency and doesn't appear to be used directly in the core functionality
 # pandas>=1.3.0
