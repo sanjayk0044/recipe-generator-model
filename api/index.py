@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from api.services.gemini_service import generate_recipes
 from api.services.image_generation import fetch_images_from_duckduckgo
+from api.services.youtube_link_generator import get_video_links_for_recipes
 
 app = Flask(__name__)
 
@@ -54,4 +55,20 @@ def generate_image():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-
+@app.route('/youtube', methods=['POST'])
+def generate_youtube_link():
+    try:
+        data = request.get_json()
+        
+        # Validate input
+        if not data or not isinstance(data, list):
+            return jsonify({"error": "Request body must be a JSON array of recipe names"}), 400
+            
+        # Fetch images for each recipe name
+        youtube_links = get_video_links_for_recipes(data)
+        
+        # Return properly formatted JSON response
+        return jsonify(youtube_links), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
