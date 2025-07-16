@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from api.services.gemini_service import generate_recipes
-from api.services.mongodb_service import get_mongodb_service
+from api.services.image_generation import fetch_images_from_duckduckgo
 
 app = Flask(__name__)
 
@@ -34,3 +34,24 @@ def create_recipes():
         return jsonify(recipes), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+
+@app.route('/images', methods=['POST'])
+def generate_image():
+    try:
+        data = request.get_json()
+        
+        # Validate input
+        if not data or not isinstance(data, list):
+            return jsonify({"error": "Request body must be a JSON array of recipe names"}), 400
+            
+        # Fetch images for each recipe name
+        images = fetch_images_from_duckduckgo(data)
+        
+        # Return properly formatted JSON response
+        return jsonify(images), 200
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
