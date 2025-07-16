@@ -5,7 +5,18 @@ from api.services.image_generation import fetch_images_from_duckduckgo
 from api.services.youtube_link_generator import get_video_links_for_recipes
 
 app = Flask(__name__)
-CORS(app, origins="C:///.....main.html")
+# Enable CORS with more specific configuration
+CORS(app, resources={r"/*": {"origins": "*", "allow_headers": ["Content-Type", "Authorization"], "methods": ["GET", "POST", "OPTIONS"]}})
+
+# Handle OPTIONS requests explicitly
+@app.route('/', methods=['OPTIONS'])
+@app.route('/recipes', methods=['OPTIONS'])
+@app.route('/images', methods=['OPTIONS'])
+@app.route('/youtube', methods=['OPTIONS'])
+@app.route('/health', methods=['OPTIONS'])
+def handle_options():
+    response = app.make_default_options_response()
+    return response
 
 @app.route('/')
 def home():
@@ -14,6 +25,13 @@ def home():
 @app.route('/health', methods=['GET'])
 def health():
     return 'OK'
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 @app.route('/recipes', methods=['POST'])
 def create_recipes():
