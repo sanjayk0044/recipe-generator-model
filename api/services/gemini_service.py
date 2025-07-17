@@ -46,7 +46,6 @@ def create_prompt(preferences):
        - necessary_items: List of essential ingredients with their details (_id, item_name, packet_weight_grams, price, quantity)
        - optional_items: List of optional ingredients with their details (_id, item_name, packet_weight_grams, price, quantity)
     4. procedure: Detailed step-by-step cooking instructions in maximum 500 words with quantity of ingredient to use.
-    5. youtube: If you know of a relevant YouTube tutorial for a similar recipe, include the link (or null if not applicable)
     
     CRITICAL INSTRUCTIONS:
     - You will be provided with a catalog of available ingredients with their _id values.
@@ -58,7 +57,6 @@ def create_prompt(preferences):
     - DO NOT include necessary_items_details or optional_items_details fields in your response.
     - Alway include _id, item_name, packet_weight_grams, price, quantity in necessary_items and optional_items.
     - Quantity is number of packets that should be included.
-    - Youtube video must be older than atleast 6 months and can be accessable.
     
     Return your response as a valid JSON array with 5 recipe object. Each object should have the structure described above.
     Do not include any explanations or text outside of the JSON structure.
